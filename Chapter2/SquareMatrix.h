@@ -10,9 +10,10 @@ private:
 public:
 	void MakeEmpty(int);
 	void StoreValue(int, int, int);
-	SquareMatrix Add(SquareMatrix& , SquareMatrix& );
-	SquareMatrix Substract(SquareMatrix& , SquareMatrix& );
-	SquareMatrix Copy(SquareMatrix& );
+	SquareMatrix Add( SquareMatrix& );
+	SquareMatrix Substract( SquareMatrix& );
+	SquareMatrix Copy( );
+	void print();
 };
 
 
