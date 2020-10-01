@@ -19,7 +19,7 @@ public:
   int Find_start(string) const;
   int Find_end(string) const;
   int Find(string) const;
-  void Printname() const; //print word name
+  void Printname(std::ostream& out) const; //print word name
 
 private:
   string value;

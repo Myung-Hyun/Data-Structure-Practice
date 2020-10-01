@@ -25,7 +25,7 @@ void ItemType::Initialize(string number)
   value = number;
 }
 
-void ItemType::Print(std::ostream& out) const 
+void ItemType::Print(std::ostream& out) const  
 // pre:  out has been opened.
 // post: value has been sent to the stream out.
 {
@@ -82,12 +82,13 @@ int ItemType::Find(string str) const
 }
 
 
-void ItemType::Printname() const
+void ItemType::Printname(std::ostream& out) const //print할 경우에 ostream 객체를 받아오지 않고, 함수 안에서 open하면 열때마다 덮어쓴다.
 {
+
 	int colon = this->Find(":");
 	for (int i = 0; i < colon; i++)
 	{
-		cout << (this->value)[i];
+		out << (this->value)[i];
 	}
 
 

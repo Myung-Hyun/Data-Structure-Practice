@@ -96,6 +96,7 @@ void SortedType::GetNextItem(ItemType& item)
 
 void SortedType::Start(string pattern) //','를 기준으로 구분.
 {
+	ofstream outfile("Pattern.out");
 	int count = 0;
 	for (int i = 0; i < (*this).LengthIs(); i++) //pattern이 일치하는 단어 수를 먼저 찾아야 한다.
 	{
@@ -115,11 +116,13 @@ void SortedType::Start(string pattern) //','를 기준으로 구분.
 	{
 		for (int i = 0; i < (*this).LengthIs(); i++)
 		{
-			int index = (this->info[i]).Find_start(pattern);
+			int index = (this->info[i]).Find(pattern);
 			if (index != -1)
 			{
 				this->info[i].Print(cout);
+				this->info[i].Print(outfile);
 				cout << endl;
+				outfile << endl;
 			}
 		}
 	}
@@ -127,20 +130,24 @@ void SortedType::Start(string pattern) //','를 기준으로 구분.
 		for (int i = 0; i < (*this).LengthIs(); i++)
 		{
 
-			int index = (this->info[i]).Find_start(pattern);
+			int index = (this->info[i]).Find(pattern);
 
 			if (index != -1)
 			{
-				(this->info[i]).Printname();
+				(this->info[i]).Printname(cout);
+				(this->info[i]).Printname(outfile);
 				cout << " ";
+				outfile << " ";
 			}
 		}
 		cout << endl;
+		outfile << endl;
 	}
-
+	outfile.close();
 }
 void SortedType::End(string pattern) // 문자열 크기를 기준으로 뒤쪽 10개에서만 찾는다.
 {
+	ofstream outfile("Pattern.out");
 	int count = 0;
 	for (int i = 0; i < (*this).LengthIs(); i++) //pattern이 일치하는 단어 수를 먼저 찾아야 한다.
 	{
@@ -160,11 +167,13 @@ void SortedType::End(string pattern) // 문자열 크기를 기준으로 뒤쪽 10개에서만 �
 	{
 		for (int i = 0; i < (*this).LengthIs(); i++)
 		{
-			int index = (this->info[i]).Find_end(pattern);
+			int index = (this->info[i]).Find(pattern);
 			if (index != -1)
 			{
 				this->info[i].Print(cout);
+				this->info[i].Print(outfile);
 				cout << endl;
+				outfile << endl;
 			}
 		}
 	}
@@ -172,22 +181,26 @@ void SortedType::End(string pattern) // 문자열 크기를 기준으로 뒤쪽 10개에서만 �
 		for (int i = 0; i < (*this).LengthIs(); i++)
 		{
 
-			int index = (this->info[i]).Find_end(pattern);
+			int index = (this->info[i]).Find(pattern);
 
 			if (index != -1)
 			{
-				(this->info[i]).Printname();
+				(this->info[i]).Printname(cout);
+				(this->info[i]).Printname(outfile);
 				cout << " ";
+				outfile << " ";
 			}
 		}
 		cout << endl;
+		outfile << endl;
 	}
-
+	outfile.close();
 }
 
 //sorted list의 각 item에 pattern이 있는지 찾는다. 
 void SortedType::Contain(string pattern)
 {
+	ofstream outfile("Pattern.out");  //Contain할 때마다 새롭게 파일을 쓴다. Start등의 결과를 누적하고 싶으면, int에서 파일 open하고 모든 함수에서 다 ofstream 받아야 함.
 	int count = 0;
 	for (int i=0; i < (*this).LengthIs(); i++) //pattern이 일치하는 단어 수를 먼저 찾아야 한다.
 	{
@@ -205,13 +218,16 @@ void SortedType::Contain(string pattern)
 	}
 	else if (count == 1)
 	{
+		
 		for (int i = 0; i < (*this).LengthIs(); i++)
 		{
 			int index = (this->info[i]).Find(pattern);
 			if (index != -1)
 			{
 				this->info[i].Print(cout);
+				this->info[i].Print(outfile);
 				cout << endl;
+				outfile << endl;
 			}
 		}
 	}
@@ -223,12 +239,15 @@ void SortedType::Contain(string pattern)
 			
 			if (index != -1)
 			{						
-				(this->info[i]).Printname();
+				(this->info[i]).Printname(cout);
+				(this->info[i]).Printname(outfile);
 				cout << " ";
+				outfile << " ";
 			}
 		}
 		cout << endl;
+		outfile << endl;
 	}
-	
+	outfile.close();
 }
 
