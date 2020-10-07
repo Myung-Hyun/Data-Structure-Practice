@@ -94,3 +94,45 @@ void QueType::ReplaceItem(ItemType oldItem, ItemType newItem)
     }
 
 }
+
+bool QueType::Identical(QueType& queue)
+{
+    int length = 0;
+    int length2 = 0;
+    bool equal;
+
+    if (rear >= front)
+    {
+        length = rear - front;
+    }
+    else
+    {
+        length = rear - front + maxQue;
+    }
+
+    if (queue.rear >= queue.front)
+    {
+        length2 = queue.rear - queue.front;
+    }
+    else
+    {
+        length2 = queue.rear - queue.front + queue.maxQue;
+    }
+
+    if (length != length2)
+    {
+        equal = false;
+        return equal;
+    }
+
+    for (int i = 0; i < length; i++)
+    {
+        if (this->items[i] != queue.items[i])
+        {
+            equal = false;
+            return equal;
+        }
+    }
+    equal = true;
+    return equal;
+}

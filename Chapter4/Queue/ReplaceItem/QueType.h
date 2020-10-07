@@ -36,6 +36,8 @@ public:
     //       item is a copy of removed element.
 
     void ReplaceItem(ItemType oldItem, ItemType newItem);
+    bool Identical(QueType& queue);
+
 
 private:
     int front;
