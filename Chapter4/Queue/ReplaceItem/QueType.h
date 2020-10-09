@@ -13,6 +13,8 @@ public:
     // that the queue has been initialized is omitted.
     QueType(int max);
     // Parameterized class constructor.
+    QueType(QueType& queue);
+
     ~QueType();
     // Class destructor.
     void MakeEmpty();
@@ -28,22 +30,29 @@ public:
     // Function: Adds newItem to the rear of the queue.
     // Post: If (queue is full) FullQueue exception is thrown
     //       else newItem is at rear of queue.
+
+    void MinEnqueue(ItemType newItem);
+
     void Dequeue(ItemType& item);
     // Function: Removes front item from the queue and returns it in item.
     // Post: If (queue is empty) EmptyQueue exception is thrown
     //       and item is undefined
     //       else front element has been removed from queue and
     //       item is a copy of removed element.
+    void MinDequeue(ItemType& item);
+
 
     void ReplaceItem(ItemType oldItem, ItemType newItem);
-    bool Identical(QueType& queue);
-
+    bool Identical(QueType queue);
+    int Length();
+    
 
 private:
     int front;
     int rear;
     ItemType* items;
     int maxQue;
+    int minimum_pos;
 };
 
 
