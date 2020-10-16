@@ -1,8 +1,8 @@
 // Header file for Unsorted List ADT.  
-#include <iostream>
+
 template <class ItemType>
 struct NodeType;
-using namespace std;
+
 // Assumption:  ItemType is a type for which the operators "<" 
 // and "==" are defined-either an appropriate built-in type or
 // a class that overloads these operators.
@@ -258,27 +258,27 @@ void SortedType<ItemType>::MergeLists(SortedType<ItemType>& other, SortedType<It
     NodeType<ItemType>* ptr1 = listData;
     NodeType<ItemType>* ptr2 = other.listData;
     
-    NodeType<ItemType>* location = result.listData; //result ³¡¿¡ °è¼Ó ³Ö±â À§ÇÑ Æ÷ÀÎÅÍ
+    NodeType<ItemType>* location = result.listData; //result ëì— ê³„ì† ë„£ê¸° ìœ„í•œ í¬ì¸í„°
     
     
 
     while (ptr1 != NULL && ptr2 != NULL)
     {
-        NodeType<ItemType>* temp = new NodeType<ItemType>; // while¹® µ¹¶§¸¶´Ù ÇÒ´ç¹Ş¾Æ¼­ resultÀÇ Å©±â¸¦ ´Ã¸°´Ù.
-        if (ptr1->info < ptr2->info) //ptr1ÀÇ °ªÀ» result¿¡
+        NodeType<ItemType>* temp = new NodeType<ItemType>; // whileë¬¸ ëŒë•Œë§ˆë‹¤ í• ë‹¹ë°›ì•„ì„œ resultì˜ í¬ê¸°ë¥¼ ëŠ˜ë¦°ë‹¤.
+        if (ptr1->info < ptr2->info) //ptr1ì˜ ê°’ì„ resultì—
         {
             temp->info = ptr1->info;
-            if (location == NULL) //result¿¡ Ã³À½ ³Ö´Â °æ¿ì
+            if (location == NULL) //resultì— ì²˜ìŒ ë„£ëŠ” ê²½ìš°
             {
                 result.listData = temp;
                 location = temp;
             }
             else
             {
-                location->next = temp; //¸¶Áö¸·¿¡ »õ·Î¿î ¸Ş¸ğ¸® ¿¬°á
-                location = temp; //¸¶Áö¸· À§Ä¡ °¡¸®Å°±â
+                location->next = temp; //ë§ˆì§€ë§‰ì— ìƒˆë¡œìš´ ë©”ëª¨ë¦¬ ì—°ê²°
+                location = temp; //ë§ˆì§€ë§‰ ìœ„ì¹˜ ê°€ë¦¬í‚¤ê¸°
             }
-            ptr1 = ptr1->next; //list1ÀÇ ´ÙÀ½ ¿ä¼Ò¸¦ °¡¸®Å°°Ô ÇÏ°í ´Ù½Ã ºñ±³.
+            ptr1 = ptr1->next; //list1ì˜ ë‹¤ìŒ ìš”ì†Œë¥¼ ê°€ë¦¬í‚¤ê²Œ í•˜ê³  ë‹¤ì‹œ ë¹„êµ.
         }
         else
         {
@@ -296,8 +296,8 @@ void SortedType<ItemType>::MergeLists(SortedType<ItemType>& other, SortedType<It
             ptr2 = ptr2->next;
         }
     }
-    //±æÀÌ°¡ ´Ù¸¥ °æ¿ì ³ª¸ÓÁö¸¦ ³Ö¾îÁà¾ß ÇÔ. 
-    //³²¾Ò´Ù´Â °ÍÀº ¸ÕÀú µé¾î°£ ¿ä¼Òº¸´Ù ´Ù Å« °ÍÀÌ°í ÀÌ¹Ì Á¤·ÄµÇ¾î ÀÖÀ¸¹Ç·Î, Å©±â ºñ±³ ÇÊ¿ä ¾øÀ½.
+    //ê¸¸ì´ê°€ ë‹¤ë¥¸ ê²½ìš° ë‚˜ë¨¸ì§€ë¥¼ ë„£ì–´ì¤˜ì•¼ í•¨. 
+    //ë‚¨ì•˜ë‹¤ëŠ” ê²ƒì€ ë¨¼ì € ë“¤ì–´ê°„ ìš”ì†Œë³´ë‹¤ ë‹¤ í° ê²ƒì´ê³  ì´ë¯¸ ì •ë ¬ë˜ì–´ ìˆìœ¼ë¯€ë¡œ, í¬ê¸° ë¹„êµ í•„ìš” ì—†ìŒ.
     
     if (ptr1 == NULL)
     {
@@ -307,7 +307,7 @@ void SortedType<ItemType>::MergeLists(SortedType<ItemType>& other, SortedType<It
             temp->info = ptr2->info;
             location->next = temp;
             location = temp;
-            ptr2 = ptr2->next; //while¹® Á¶°ÇÀ» ¹Ù²Ù´Â ÄÚµå°¡ while¹® ¾È¿¡ ÀÖ¾î¾ß while¹®ÀÌ ´õ ¾Èµ·´Ù.
+            ptr2 = ptr2->next; //whileë¬¸ ì¡°ê±´ì„ ë°”ê¾¸ëŠ” ì½”ë“œê°€ whileë¬¸ ì•ˆì— ìˆì–´ì•¼ whileë¬¸ì´ ë” ì•ˆëˆë‹¤.
         }
         
     }
@@ -324,5 +324,5 @@ void SortedType<ItemType>::MergeLists(SortedType<ItemType>& other, SortedType<It
         }
     }
     
-    location->next = NULL; //ÀÌ ÄÚµå ¾øÀ¸¸é ¼Ò¸êÀÚ ¿¡·¯³­´Ù. NodeType ÀÇ next°¡ NULL ÃÊ±âÈ­ µÇ¾î ÀÖÁö ¾Ê¾Æ¼­, ¸¶Áö¸· nodeÀÇ next´Â NULL·Î ÇØÁà¾ß ÇÑ´Ù.
+    location->next = NULL; //ì´ ì½”ë“œ ì—†ìœ¼ë©´ ì†Œë©¸ì ì—ëŸ¬ë‚œë‹¤. NodeType ì˜ nextê°€ NULL ì´ˆê¸°í™” ë˜ì–´ ìˆì§€ ì•Šì•„ì„œ, ë§ˆì§€ë§‰ nodeì˜ nextëŠ” NULLë¡œ í•´ì¤˜ì•¼ í•œë‹¤.
 }
