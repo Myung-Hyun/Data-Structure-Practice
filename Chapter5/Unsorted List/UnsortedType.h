@@ -1,6 +1,9 @@
 // Header file for Unsorted List ADT.  
+
+
 template <class ItemType>
 struct NodeType;
+
 
 // Assumption:  ItemType is a type for which the operators "<" 
 // and "==" are defined?ither an appropriate built-in type or
@@ -47,6 +50,9 @@ public:
   //       One and only one element in list has a key matching
   //       item's key.
   // Post: No element in list has a key matching item's key.
+
+  void DeleteItem_a(ItemType item);
+  void DeleteItem_b(ItemType item);
 
   void ResetList();
   // Initializes current position for an iteration through the
@@ -194,6 +200,98 @@ void UnsortedType<ItemType>::DeleteItem(ItemType item)
     length--;
 }
 
+template <class ItemType>
+void UnsortedType<ItemType>::DeleteItem_a(ItemType item)
+// Pre:  item's key has been initialized.
+//       An element in the list has a key that matches item's.
+// Post: No element in the list has a key that matches item's.
+{
+    NodeType<ItemType>* location = listData;
+    NodeType<ItemType>* preLoc = NULL;
+    NodeType<ItemType>* tempLocation;
+
+    // Locate node to be deleted.
+    if (item == listData->info)
+    {
+        tempLocation = location;
+        listData = listData->next;		// Delete first node.
+    }
+    else
+    {
+        preLoc = location;
+        location = location->next;
+        
+        while (!(item == location->info)) //찾지 못했고 NULL아니면 계속 찾는다. 
+        {
+            preLoc = location;
+            location = location->next;
+            if (location == NULL) //while문 조건에 같이 쓰면 location이 NULL일 때, location->info를 실행해버려서 에러남.
+                break;
+        }
+        
+        tempLocation = location;
+        if (location != NULL)
+        {
+            preLoc->next = location->next;
+        }
+    }
+
+    if (location != NULL)
+    {
+        delete tempLocation;
+    }
+    length--;
+}
+
+template <class ItemType>
+void UnsortedType<ItemType>::DeleteItem_b(ItemType item)
+// Pre:  item's key has been initialized.
+//       An element in the list has a key that matches item's.
+// Post: No element in the list has a key that matches item's.
+{
+
+    NodeType<ItemType>* location = listData;
+    NodeType<ItemType>* preLoc = NULL;
+    NodeType<ItemType>* tempLocation;
+    bool finish=false;
+
+    // Locate node to be deleted.
+    if (item == listData->info)
+    {
+        tempLocation = location;
+        listData = listData->next;		// Delete first node.
+        delete tempLocation;
+    }
+    else
+    {
+        preLoc = location;
+        location = location->next;
+        while (finish != true)
+        {
+           
+            while (item != location->info) //찾지 못했고 NULL아니면 계속 찾는다. 
+            {
+                preLoc = location;
+                location = location->next;
+                if (location == NULL) //while문 조건에 같이 쓰면 location이 NULL일 때, location->info를 실행해버려서 에러남.
+                {
+                    finish = true;
+                    break;
+                }
+                
+            }
+
+            tempLocation = location;
+            if (location != NULL)
+            {
+                preLoc->next = location->next;
+                location = location->next; //모든 원소를 지우기 위울 때, 다음번 검색을 위해 추가해주어야 하는 코드, 하지 않으면 location이 NULL이 된다. 
+                delete tempLocation;
+            }
+        }
+    }
+    length--;
+}
 template <class ItemType>
 void UnsortedType<ItemType>::ResetList()
 // Post: Current position has been initialized.
