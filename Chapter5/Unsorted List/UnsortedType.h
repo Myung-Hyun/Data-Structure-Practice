@@ -221,11 +221,11 @@ void UnsortedType<ItemType>::DeleteItem_a(ItemType item)
         preLoc = location;
         location = location->next;
         
-        while (!(item == location->info)) //Ã£Áö ¸øÇß°í NULL¾Æ´Ï¸é °è¼Ó Ã£´Â´Ù. 
+        while (!(item == location->info)) //ì°¾ì§€ ëª»í–ˆê³  NULLì•„ë‹ˆë©´ ê³„ì† ì°¾ëŠ”ë‹¤. 
         {
             preLoc = location;
             location = location->next;
-            if (location == NULL) //while¹® Á¶°Ç¿¡ °°ÀÌ ¾²¸é locationÀÌ NULLÀÏ ¶§, location->info¸¦ ½ÇÇàÇØ¹ö·Á¼­ ¿¡·¯³².
+            if (location == NULL) //whileë¬¸ ì¡°ê±´ì— ê°™ì´ ì“°ë©´ locationì´ NULLì¼ ë•Œ, location->infoë¥¼ ì‹¤í–‰í•´ë²„ë ¤ì„œ ì—ëŸ¬ë‚¨.
                 break;
         }
         
@@ -269,11 +269,11 @@ void UnsortedType<ItemType>::DeleteItem_b(ItemType item)
         while (finish != true)
         {
            
-            while (item != location->info) //Ã£Áö ¸øÇß°í NULL¾Æ´Ï¸é °è¼Ó Ã£´Â´Ù. 
+            while (item != location->info) //ì°¾ì§€ ëª»í–ˆê³  NULLì•„ë‹ˆë©´ ê³„ì† ì°¾ëŠ”ë‹¤. 
             {
                 preLoc = location;
                 location = location->next;
-                if (location == NULL) //while¹® Á¶°Ç¿¡ °°ÀÌ ¾²¸é locationÀÌ NULLÀÏ ¶§, location->info¸¦ ½ÇÇàÇØ¹ö·Á¼­ ¿¡·¯³².
+                if (location == NULL) //whileë¬¸ ì¡°ê±´ì— ê°™ì´ ì“°ë©´ locationì´ NULLì¼ ë•Œ, location->infoë¥¼ ì‹¤í–‰í•´ë²„ë ¤ì„œ ì—ëŸ¬ë‚¨.
                 {
                     finish = true;
                     break;
@@ -285,7 +285,7 @@ void UnsortedType<ItemType>::DeleteItem_b(ItemType item)
             if (location != NULL)
             {
                 preLoc->next = location->next;
-                location = location->next; //¸ğµç ¿ø¼Ò¸¦ Áö¿ì±â À§¿ï ¶§, ´ÙÀ½¹ø °Ë»öÀ» À§ÇØ Ãß°¡ÇØÁÖ¾î¾ß ÇÏ´Â ÄÚµå, ÇÏÁö ¾ÊÀ¸¸é locationÀÌ NULLÀÌ µÈ´Ù. 
+                location = location->next; //ëª¨ë“  ì›ì†Œë¥¼ ì§€ìš°ê¸° ìœ„ìš¸ ë•Œ, ë‹¤ìŒë²ˆ ê²€ìƒ‰ì„ ìœ„í•´ ì¶”ê°€í•´ì£¼ì–´ì•¼ í•˜ëŠ” ì½”ë“œ, í•˜ì§€ ì•Šìœ¼ë©´ locationì´ NULLì´ ëœë‹¤. 
                 delete tempLocation;
             }
         }
@@ -310,20 +310,20 @@ void UnsortedType<ItemType>::GetNextItem(ItemType& item)
   item = currentPos->info;
 } 
 
-
+//(ìˆ˜ì •í•  ë¶€ë¶„)Unsorted listì˜ ê²½ìš° listData ìª½ìœ¼ë¡œ ê³„ì† ë„£ì–´ì£¼ì–´ë„ ë˜ë¯€ë¡œ, ì²˜ìŒ ë„£ëŠ” ê²½ìš°(if)ë¬¸ í•„ìš”ì—†ê³ , locationìœ¼ë¡œ ê³„ì† ë§ˆì§€ë§‰ ìš”ì†Œ ê°€ë¦¬í‚¬ í•„ìš”ë„ ì—†ë‹¤.
 template <class ItemType>
 void UnsortedType<ItemType>::MergeLists(UnsortedType<ItemType>& other, UnsortedType<ItemType>& result)
 {
     NodeType<ItemType>* ptr1 = listData;
     NodeType<ItemType>* ptr2 = other.listData;
 
-    NodeType<ItemType>* location = result.listData; //result ³¡¿¡ °è¼Ó ³Ö±â À§ÇÑ Æ÷ÀÎÅÍ
+    NodeType<ItemType>* location = result.listData; //result ëì— ê³„ì† ë„£ê¸° ìœ„í•œ í¬ì¸í„°
 
 
 
     while (ptr1 != NULL)
     {
-        NodeType<ItemType>* temp = new NodeType<ItemType>; // while¹® µ¹¶§¸¶´Ù ÇÒ´ç¹Ş¾Æ¼­ resultÀÇ Å©±â¸¦ ´Ã¸°´Ù.
+        NodeType<ItemType>* temp = new NodeType<ItemType>; // whileë¬¸ ëŒë•Œë§ˆë‹¤ í• ë‹¹ë°›ì•„ì„œ resultì˜ í¬ê¸°ë¥¼ ëŠ˜ë¦°ë‹¤.
         temp->info = ptr1->info;
         if (location == NULL)
         {
@@ -332,8 +332,8 @@ void UnsortedType<ItemType>::MergeLists(UnsortedType<ItemType>& other, UnsortedT
         }
         else
         {
-            location->next = temp; //¸¶Áö¸·¿¡ »õ·Î¿î ¸Ş¸ğ¸® ¿¬°á
-            location = temp; //¸¶Áö¸· À§Ä¡ °¡¸®Å°±â
+            location->next = temp; //ë§ˆì§€ë§‰ì— ìƒˆë¡œìš´ ë©”ëª¨ë¦¬ ì—°ê²°
+            location = temp; //ë§ˆì§€ë§‰ ìœ„ì¹˜ ê°€ë¦¬í‚¤ê¸°
         }
         ptr1 = ptr1->next;
     }
@@ -343,11 +343,11 @@ void UnsortedType<ItemType>::MergeLists(UnsortedType<ItemType>& other, UnsortedT
         NodeType<ItemType>* temp = new NodeType<ItemType>; 
         temp->info = ptr2->info;
        
-        location->next = temp; //¸¶Áö¸·¿¡ »õ·Î¿î ¸Ş¸ğ¸® ¿¬°á
-        location = temp; //¸¶Áö¸· À§Ä¡ °¡¸®Å°±â
+        location->next = temp; //ë§ˆì§€ë§‰ì— ìƒˆë¡œìš´ ë©”ëª¨ë¦¬ ì—°ê²°
+        location = temp; //ë§ˆì§€ë§‰ ìœ„ì¹˜ ê°€ë¦¬í‚¤ê¸°
         
         ptr2 = ptr2->next;
 
     }
-    location->next = NULL; //ÀÌ ÄÚµå ¾øÀ¸¸é ¼Ò¸êÀÚ ¿¡·¯³­´Ù. NodeType ÀÇ next°¡ NULL ÃÊ±âÈ­ µÇ¾î ÀÖÁö ¾Ê¾Æ¼­, ¸¶Áö¸· nodeÀÇ next´Â NULL·Î ÇØÁà¾ß ÇÑ´Ù.
+    location->next = NULL; //ì´ ì½”ë“œ ì—†ìœ¼ë©´ ì†Œë©¸ì ì—ëŸ¬ë‚œë‹¤. NodeType ì˜ nextê°€ NULL ì´ˆê¸°í™” ë˜ì–´ ìˆì§€ ì•Šì•„ì„œ, ë§ˆì§€ë§‰ nodeì˜ nextëŠ” NULLë¡œ í•´ì¤˜ì•¼ í•œë‹¤.
 }
