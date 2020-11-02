@@ -49,11 +49,13 @@ public:
     // Move the currentLine cursor to the 0th node.
     void GoToBottom();
     // Move the currentLine cursor to the (last-1)th node for insert
-    void MoveLeft(int);
+    void MoveLeft();
     // Move to the left by the entered parameter.
-    void MoveRight(int);
+    void MoveRight();
     // Move to the right by the entered parameter.
-    void DeleteCurrent();
+    void BackSpace();
+
+    void Delete();
     // Delete the node pointed to by currentLine and move currentLine to the left node
     void Print();
     // For DEBUG,
