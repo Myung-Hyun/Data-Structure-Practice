@@ -421,15 +421,15 @@ bool Imp_IsBST(TreeNode* tree, ItemType& min, ItemType& max) // min, max: return
 
     //왼쪽 노드가 NULL이 아니면, 왼쪽 서브트리가 BST인지 체크하고 tree->info와 비교
     if(tree->left !=NULL) {
-        ItemType left_min, left_max;
-        isBST = Imp_IsBST(tree->left, left_min, left_max);
+        
+        isBST = Imp_IsBST(tree->left, min, max);
         // 왼쪽 서브트리가 BST가 아니거나 tree->info가 왼쪽 서브트리 값보다 작은 경우
         if (!isBST || tree->info <= left_max) return false;
     }
     //오른쪽 노드가 NULL이 아니면, 오른쪽 서브트리가 BST인지 체크하고 tree->info와 비교
     if (tree->right !=NULL) {
-        ItemType right_min, right_max;
-        isBST = Imp_IsBST(tree->left, right_min, right_max);
+        
+        isBST = Imp_IsBST(tree->left, min, max);
         if (!isBST || tree->info >= right_min) return false;
     }
 
